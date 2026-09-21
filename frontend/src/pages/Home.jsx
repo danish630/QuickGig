@@ -41,8 +41,9 @@ const Home = () => {
           <p className="text-sm font-semibold text-[#F5A524] mb-3">
             {stats.totalOpen > 0 ? `${stats.totalOpen} ${stats.totalOpen === 1 ? 'gig' : 'gigs'} live right now` : 'Local services, sorted fast'}
           </p>
-          <h1 className="text-5xl font-extrabold text-[#1E2A4A] leading-tight mb-6">
-            Get local work done. Or find work near you.
+          <h1 className="text-5xl font-extrabold leading-tight mb-6">
+            <span className="text-[#1E2A4A]">Get local work done.</span>{' '}
+            <span className="text-[#F5A524]">Or find work near you.</span>
           </h1>
           <p className="text-gray-600 text-lg mb-8 leading-relaxed max-w-lg">
             Post a job in minutes, or browse gigs from people who need help nearby.
@@ -64,16 +65,34 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Single visual panel instead of a tile grid */}
-        <div className="lg:col-span-2 relative mb-8">
-          <div className="rounded-3xl bg-gradient-to-br from-[#1E2A4A] to-[#2A3D66] h-56 sm:h-72 p-6 sm:p-8 shadow-lg">
-            <Briefcase size={28} className="text-[#F5A524] mb-4 sm:mb-6" strokeWidth={1.5} />
-            <p className="text-white text-xl sm:text-2xl font-bold leading-snug max-w-[80%] sm:max-w-[70%]">
-              Trusted work, done nearby.
+        {/* Layered card composition instead of a flat panel */}
+        <div className="lg:col-span-2 relative h-56 sm:h-72 mb-8">
+          {/* Back card — rotated, amber */}
+          <div className="absolute inset-0 rotate-3 bg-amber-100 rounded-3xl"></div>
+          {/* Middle card — rotated other way, outline only */}
+          <div className="absolute inset-0 -rotate-2 bg-white border-2 border-[#1E2A4A]/10 rounded-3xl"></div>
+          {/* Front card — main content */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1E2A4A] to-[#2A3D66] rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between">
+            <div className="flex justify-between items-start">
+              <Briefcase size={28} className="text-[#F5A524]" strokeWidth={1.5} />
+              <div className="flex -space-x-2">
+                <div className="w-8 h-8 rounded-full bg-[#F5A524] border-2 border-[#1E2A4A] flex items-center justify-center">
+                  <Wrench size={14} className="text-[#1E2A4A]" />
+                </div>
+                <div className="w-8 h-8 rounded-full bg-white border-2 border-[#1E2A4A] flex items-center justify-center">
+                  <GraduationCap size={14} className="text-[#1E2A4A]" />
+                </div>
+                <div className="w-8 h-8 rounded-full bg-[#F5A524] border-2 border-[#1E2A4A] flex items-center justify-center">
+                  <Code size={14} className="text-[#1E2A4A]" />
+                </div>
+              </div>
+            </div>
+            <p className="text-white text-xl sm:text-2xl font-bold leading-snug">
+              Trusted work,<br />done nearby.
             </p>
           </div>
-          {/* Floating stat card — desktop only, avoids overlap on small screens */}
-          <div className="hidden sm:flex absolute -bottom-8 left-8 bg-white rounded-xl shadow-lg border border-gray-100 px-5 py-4 items-center gap-3">
+          {/* Floating stat card — desktop only */}
+          <div className="hidden sm:flex absolute -bottom-6 -right-4 bg-white rounded-xl shadow-lg border border-gray-100 px-5 py-4 items-center gap-3 z-10">
             <div className="w-9 h-9 rounded-full bg-amber-50 flex items-center justify-center flex-shrink-0">
               <Star size={16} className="text-[#B87A1A]" fill="#B87A1A" />
             </div>
