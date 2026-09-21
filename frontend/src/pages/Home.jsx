@@ -35,77 +35,37 @@ const Home = () => {
 
   return (
     <div>
-      {/* Hero */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 py-16 items-start">
-        <div className="lg:col-span-3">
-          <p className="text-sm font-semibold text-[#F5A524] mb-3">
-            {stats.totalOpen > 0 ? `${stats.totalOpen} ${stats.totalOpen === 1 ? 'gig' : 'gigs'} live right now` : 'Local services, sorted fast'}
-          </p>
-          <h1 className="text-5xl font-extrabold leading-tight mb-6">
-            <span className="text-[#1E2A4A]">Get local work done.</span>{' '}
-            <span className="text-[#F5A524]">Or find work near you.</span>
-          </h1>
-          <p className="text-gray-600 text-lg mb-8 leading-relaxed max-w-lg">
-            Post a job in minutes, or browse gigs from people who need help nearby.
-            Rated by the people who've actually worked with them.
-          </p>
-          <div className="flex gap-3">
-            <Link
-              to="/gigs"
-              className="inline-flex items-center gap-2 bg-[#F5A524] text-[#1E2A4A] px-6 py-3 rounded-md font-bold hover:bg-[#e0951c] transition shadow-sm hover:shadow-md"
-            >
-              Find a gig <ArrowRight size={18} />
-            </Link>
-            <Link
-              to="/post-gig"
-              className="bg-[#1E2A4A] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#16203a] transition shadow-sm hover:shadow-md"
-            >
-              Post a job
-            </Link>
-          </div>
-        </div>
-
-        {/* Layered card composition instead of a flat panel */}
-        <div className="lg:col-span-2 relative h-56 sm:h-72 mb-8">
-          {/* Back card — rotated, amber */}
-          <div className="absolute inset-0 rotate-3 bg-amber-100 rounded-3xl"></div>
-          {/* Middle card — rotated other way, outline only */}
-          <div className="absolute inset-0 -rotate-2 bg-white border-2 border-[#1E2A4A]/10 rounded-3xl"></div>
-          {/* Front card — main content */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1E2A4A] to-[#2A3D66] rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between">
-            <div className="flex justify-between items-start">
-              <Briefcase size={28} className="text-[#F5A524]" strokeWidth={1.5} />
-              <div className="flex -space-x-2">
-                <div className="w-8 h-8 rounded-full bg-[#F5A524] border-2 border-[#1E2A4A] flex items-center justify-center">
-                  <Wrench size={14} className="text-[#1E2A4A]" />
-                </div>
-                <div className="w-8 h-8 rounded-full bg-white border-2 border-[#1E2A4A] flex items-center justify-center">
-                  <GraduationCap size={14} className="text-[#1E2A4A]" />
-                </div>
-                <div className="w-8 h-8 rounded-full bg-[#F5A524] border-2 border-[#1E2A4A] flex items-center justify-center">
-                  <Code size={14} className="text-[#1E2A4A]" />
-                </div>
-              </div>
-            </div>
-            <p className="text-white text-xl sm:text-2xl font-bold leading-snug">
-              Trusted work,<br />done nearby.
-            </p>
-          </div>
-          {/* Floating stat card — desktop only */}
-          <div className="hidden sm:flex absolute -bottom-6 -right-4 bg-white rounded-xl shadow-lg border border-gray-100 px-5 py-4 items-center gap-3 z-10">
-            <div className="w-9 h-9 rounded-full bg-amber-50 flex items-center justify-center flex-shrink-0">
-              <Star size={16} className="text-[#B87A1A]" fill="#B87A1A" />
-            </div>
-            <div>
-              <p className="text-sm font-bold text-[#1E2A4A]">Rated by real users</p>
-              <p className="text-xs text-gray-400">Clients & workers both review</p>
-            </div>
-          </div>
+      {/* Hero — text only, no side panel */}
+      <div className="py-16 max-w-2xl">
+        <p className="text-sm font-semibold text-[#F5A524] mb-3">
+          {stats.totalOpen > 0 ? `${stats.totalOpen} ${stats.totalOpen === 1 ? 'gig' : 'gigs'} live right now` : 'Local services, sorted fast'}
+        </p>
+        <h1 className="text-5xl font-extrabold leading-tight mb-6">
+          <span className="text-[#1E2A4A]">Get local work done.</span>{' '}
+          <span className="text-[#F5A524]">Or find work near you.</span>
+        </h1>
+        <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+          Post a job in minutes, or browse gigs from people who need help nearby.
+          Rated by the people who've actually worked with them.
+        </p>
+        <div className="flex gap-3">
+          <Link
+            to="/gigs"
+            className="inline-flex items-center gap-2 bg-[#F5A524] text-[#1E2A4A] px-6 py-3 rounded-md font-bold hover:bg-[#e0951c] transition shadow-sm hover:shadow-md"
+          >
+            Find a gig <ArrowRight size={18} />
+          </Link>
+          <Link
+            to="/post-gig"
+            className="bg-[#1E2A4A] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#16203a] transition shadow-sm hover:shadow-md"
+          >
+            Post a job
+          </Link>
         </div>
       </div>
 
       {/* Stats bar */}
-      <div className="grid grid-cols-3 gap-4 py-10 mt-8 border-y border-gray-200">
+      <div className="grid grid-cols-3 gap-4 py-10 border-y border-gray-200">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center">
             <Briefcase size={18} className="text-[#B87A1A]" />
